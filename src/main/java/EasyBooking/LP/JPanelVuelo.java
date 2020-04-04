@@ -3,6 +3,8 @@ package EasyBooking.LP;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.awt.Color;
 import java.awt.Dimension;
 
@@ -25,17 +27,23 @@ public class JPanelVuelo extends JPanel {
 		setForeground(Color.WHITE);
 		setLayout(null);
 		
-		JLabel lblHoraSalida = new JLabel("6:05");
+		SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+		String horaSalida = sdf.format(v.getHora_salida());
+		
+		JLabel lblHoraSalida = new JLabel(horaSalida);
 		lblHoraSalida.setFont(new Font("Tahoma", Font.PLAIN, 42));
 		lblHoraSalida.setBounds(280, 92, 181, 36);
 		add(lblHoraSalida);
 		
-		JLabel lblHoraLlegada = new JLabel("17:00");
+		String horaLlegada = sdf.format(v.getHora_llegada());
+		
+		
+		JLabel lblHoraLlegada = new JLabel(horaLlegada);
 		lblHoraLlegada.setFont(new Font("Tahoma", Font.PLAIN, 42));
 		lblHoraLlegada.setBounds(411, 73, 201, 75);
 		add(lblHoraLlegada);
 		
-		JLabel lblLinea = new JLabel("-");
+		JLabel lblLinea = new JLabel(" -  ");
 		lblLinea.setFont(new Font("Tahoma", Font.PLAIN, 42));
 		lblLinea.setBounds(380, 96, 69, 20);
 		add(lblLinea);
@@ -47,7 +55,9 @@ public class JPanelVuelo extends JPanel {
 		add(panelDeArriba);
 		panelDeArriba.setLayout(null);
 		
-		JLabel lblPrecio = new JLabel("802,20\u20AC");
+		double precio=v.getPrecio();
+		String precioLabel= Double.toString(precio);
+		JLabel lblPrecio = new JLabel(precioLabel);
 		lblPrecio.setBounds(120, 68, 156, 46);
 		panelDeArriba.add(lblPrecio);
 		lblPrecio.setFont(new Font("Tahoma", Font.BOLD, 38));
@@ -59,12 +69,12 @@ public class JPanelVuelo extends JPanel {
 		btnVerVuelos.setForeground(Color.WHITE);
 		btnVerVuelos.setFont(new Font("Tahoma", Font.BOLD, 18));
 		
-		JLabel lblOrigen = new JLabel("Madrid\r\n");
+		JLabel lblOrigen = new JLabel(v.getOrigen());
 		lblOrigen.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblOrigen.setBounds(290, 144, 69, 20);
 		add(lblOrigen);
 		
-		JLabel lblNewYork = new JLabel("New York");
+		JLabel lblNewYork = new JLabel(v.getDestino());
 		lblNewYork.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblNewYork.setBounds(421, 144, 102, 20);
 		add(lblNewYork);

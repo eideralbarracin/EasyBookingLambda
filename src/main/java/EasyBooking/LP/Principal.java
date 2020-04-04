@@ -47,7 +47,7 @@ import javax.swing.JTextField;
 public class Principal extends JFrame {
 
 	private JPanel contentPane;
-	private JScrollPane scrollPane;
+	private static JScrollPane scrollPane;
 	private static JPanel PscrollPane;
 	private ArrayList<Vuelo>Lista_vuelos;
 	private static JTextField txtPrecioMin;
@@ -255,7 +255,7 @@ public class Principal extends JFrame {
 		
 
 
-		
+		PscrollPane.repaint();
 		InsertarJPanel(Gestor_Vuelos.devolver_Lista());
 		PscrollPane.repaint();
 		scrollPane.repaint();
@@ -277,8 +277,9 @@ public class Principal extends JFrame {
 		int x=0;
 		int  y=50;
 	
-		
-		
+		System.out.println("Estoy aqui");
+		System.out.println(Lista_vuelos.size());
+		PscrollPane.removeAll();
 		for( int i=0; i<Lista_vuelos.size(); i++)
 		{
 			JPanelVuelo panel=new JPanelVuelo(Lista_vuelos.get(i)); //objeto 
@@ -294,6 +295,7 @@ public class Principal extends JFrame {
 			
 		}
 		PscrollPane.repaint();
+		scrollPane.repaint();
 	}
 	
 	public static void aplicarFiltros()
@@ -301,7 +303,7 @@ public class Principal extends JFrame {
 		List<Vuelo>Lista_vuelos=Gestor_Vuelos.devolver_Lista();
 		System.out.println(Lista_vuelos.size());
 		Stream<Vuelo>vuelos=Lista_vuelos.stream();
-		Stream<Vuelo>vuelos_filtrados= vuelos.filter(v->((v.getPrecio())>(Double.parseDouble(txtPrecioMin.getText())))&& ((v.getPrecio())>(Double.parseDouble(txtPrecioMax.getText()))));
+		Stream<Vuelo>vuelos_filtrados= vuelos.filter(v->((v.getPrecio())>=(Double.parseDouble(txtPrecioMin.getText())))&& ((v.getPrecio())<=(Double.parseDouble(txtPrecioMax.getText()))));
 		Lista_vuelos=vuelos_filtrados.collect(Collectors.toList());
 		System.out.println(Lista_vuelos.size());
 		InsertarJPanel(Lista_vuelos);
