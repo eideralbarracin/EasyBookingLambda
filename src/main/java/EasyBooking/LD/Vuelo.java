@@ -22,8 +22,9 @@ public class Vuelo {
 	
 	
 	public Vuelo(String codVuelo, String origen, String destino, double duracion, Date hora_salida, Date hora_llegada,
-			double precio) {
+			double precio, Aerolinea aerolinea) {
 		super();
+		this.aerolinea = aerolinea;
 		this.codVuelo = codVuelo;
 		this.origen = origen;
 		this.destino = destino;

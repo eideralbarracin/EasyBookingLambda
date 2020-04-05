@@ -52,6 +52,7 @@ public class Principal extends JFrame {
 	private ArrayList<Vuelo>Lista_vuelos;
 	private static JTextField txtPrecioMin;
 	private static JTextField txtPrecioMax;
+	private static JComboBox<String> comboBox;
 	
 	
 
@@ -209,9 +210,11 @@ public class Principal extends JFrame {
 		lblAerolinea.setBounds(25, 264, 173, 20);
 		pIzquierda.add(lblAerolinea);
 		
-		JComboBox comboBox = new JComboBox();
+		comboBox = new JComboBox<String>();
 		comboBox.setBackground(new Color(255, 255, 255));
 		comboBox.setBounds(15, 302, 173, 30);
+		comboBox.addItem("Iberia");
+		comboBox.addItem("Vueling");
 		pIzquierda.add(comboBox);
 		
 		JButton btnBuscar_2 = new JButton("Buscar");
@@ -302,13 +305,40 @@ public class Principal extends JFrame {
 	
 	public static void aplicarFiltros()
 	{
+		String min = txtPrecioMin.getText();
+		String max = txtPrecioMax.getText();
+		if (min.equals("")) { min ="0"; }
+		if (max.equals("")) { max ="10000"; }
+		
+		final double precioMin = Double.parseDouble(min);
+		final double precioMax = Double.parseDouble(max);
+		final String nomAerolinea = (String) comboBox.getSelectedItem();
+				
+		// FILTRO PARA PRECIO
 		List<Vuelo>Lista_vuelos=Gestor_Vuelos.devolver_Lista();
+		
 		System.out.println(Lista_vuelos.size());
 		Stream<Vuelo>vuelos=Lista_vuelos.stream();
-		Stream<Vuelo>vuelos_filtrados= vuelos.filter(v->((v.getPrecio())>=(Double.parseDouble(txtPrecioMin.getText())))&& ((v.getPrecio())<=(Double.parseDouble(txtPrecioMax.getText()))));
+		Stream<Vuelo>vuelos_filtrados= vuelos.filter(v->(v.getPrecio()>=precioMin) && v.getPrecio()<=precioMax);
 		Lista_vuelos=vuelos_filtrados.collect(Collectors.toList());
+				
 		System.out.println(Lista_vuelos.size());
 		InsertarJPanel(Lista_vuelos);
+		
+		// FILTRO PARA AEROLINEA
+		
+		List<Vuelo>Lista_vuelos2=Gestor_Vuelos.devolver_Lista();
+		
+		System.out.println(Lista_vuelos2.size());
+		Stream<Vuelo>vuelos2=Lista_vuelos.stream();
+		
+		
+		System.out.println(Lista_vuelos2.size());
+		Stream<Vuelo>vuelos_filtrados_aerolinea= vuelos2.filter(v->v.getAerolinea().getNomAerolimea().equals(nomAerolinea));
+		Lista_vuelos2=vuelos_filtrados_aerolinea.collect(Collectors.toList());
+				
+		System.out.println(Lista_vuelos2.size());
+		InsertarJPanel(Lista_vuelos2);
 		
 	}
 	

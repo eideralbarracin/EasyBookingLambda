@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import EasyBooking.LD.Aerolinea;
 import EasyBooking.LD.Vuelo;
 
 public class Gestor_Vuelos {
@@ -17,6 +18,9 @@ public class Gestor_Vuelos {
 	{
 		//hemen gero se leerá de la raspberry
 		
+		Aerolinea a1 = new Aerolinea("01", "Vueling");
+		Aerolinea a2 = new Aerolinea("02", "Iberia");
+				
 		Lista_vuelos= new ArrayList<Vuelo>();
 		String myDateString_ida = "13:24"; //La hora con forma de String
 		SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
@@ -24,7 +28,7 @@ public class Gestor_Vuelos {
 		
 		String myDateString_llegada = "14:40"; //La hora con forma de String
 		Date date_vuelta = sdf.parse(myDateString_llegada);
-		Vuelo v1 = new Vuelo("V1","BIL","MAD",1.15,date_ida, date_vuelta,100);
+		Vuelo v1 = new Vuelo("V1","BIL","MAD",1.15,date_ida, date_vuelta,100,a1);
 		
 		myDateString_ida = "1:24"; //La hora con forma de String
 		sdf = new SimpleDateFormat("HH:mm");
@@ -34,7 +38,7 @@ public class Gestor_Vuelos {
 		sdf = new SimpleDateFormat("HH:mm");
 		date_ida = sdf.parse(myDateString_llegada);
 		
-		Vuelo v2 = new Vuelo("V2","BIL","MAD",1.30,date_ida, date_vuelta,400);
+		Vuelo v2 = new Vuelo("V2","BIL","MAD",1.30,date_ida, date_vuelta,400,a2);
 		
 		myDateString_ida = "20:24"; //La hora con forma de String
 		sdf = new SimpleDateFormat("HH:mm");
@@ -44,7 +48,7 @@ public class Gestor_Vuelos {
 		sdf = new SimpleDateFormat("HH:mm");
 		date_ida = sdf.parse(myDateString_llegada);
 		
-		Vuelo v3 = new Vuelo("V3","BIL","MAD",1.10,date_ida, date_vuelta,600);
+		Vuelo v3 = new Vuelo("V3","BIL","MAD",1.10,date_ida, date_vuelta,600,a2);
 		
 		myDateString_ida = "20:04"; //La hora con forma de String
 		sdf = new SimpleDateFormat("HH:mm");
@@ -54,7 +58,7 @@ public class Gestor_Vuelos {
 		sdf = new SimpleDateFormat("HH:mm");
 		date_ida = sdf.parse(myDateString_llegada);
 		
-		Vuelo v4 = new Vuelo("V4","BIL","MAD",0.7,date_ida, date_vuelta,10);
+		Vuelo v4 = new Vuelo("V4","BIL","MAD",0.7,date_ida, date_vuelta,10, a1);
 		
 		myDateString_ida = "23:24"; //La hora con forma de String
 		sdf = new SimpleDateFormat("HH:mm");
@@ -63,7 +67,7 @@ public class Gestor_Vuelos {
 		myDateString_llegada = "1:24"; //La hora con forma de String
 		sdf = new SimpleDateFormat("HH:mm");
 		date_ida = sdf.parse(myDateString_llegada);
-		Vuelo v5 = new Vuelo("V5","BIL","MAD",1.5,date_ida, date_vuelta,20);
+		Vuelo v5 = new Vuelo("V5","BIL","MAD",1.5,date_ida, date_vuelta,20, a1);
 		
 		myDateString_ida = "11:00"; //La hora con forma de String
 		sdf = new SimpleDateFormat("HH:mm");
@@ -72,7 +76,7 @@ public class Gestor_Vuelos {
 		myDateString_llegada = "14:00"; //La hora con forma de String
 		sdf = new SimpleDateFormat("HH:mm");
 		date_ida = sdf.parse(myDateString_llegada);
-		Vuelo v6 = new Vuelo("V6","BIL","MAD",3,date_ida, date_vuelta,300);
+		Vuelo v6 = new Vuelo("V6","BIL","MAD",3,date_ida, date_vuelta,300, a1);
 		
 		myDateString_ida = "9:00"; //La hora con forma de String
 		sdf = new SimpleDateFormat("HH:mm");
@@ -81,7 +85,7 @@ public class Gestor_Vuelos {
 		myDateString_llegada = "15:00"; //La hora con forma de String
 		sdf = new SimpleDateFormat("HH:mm");
 		date_ida = sdf.parse(myDateString_llegada);
-		Vuelo v7 = new Vuelo("V7","BIL","MAD",6,date_ida, date_vuelta,200);
+		Vuelo v7 = new Vuelo("V7","BIL","MAD",6,date_ida, date_vuelta,200, a2);
 		
 		myDateString_ida = "00:00"; //La hora con forma de String
 		sdf = new SimpleDateFormat("HH:mm");
@@ -90,7 +94,7 @@ public class Gestor_Vuelos {
 		myDateString_llegada = "7:00"; //La hora con forma de String
 		sdf = new SimpleDateFormat("HH:mm");
 		date_ida = sdf.parse(myDateString_llegada);
-		Vuelo v8 = new Vuelo("V8","BIL","MAD",7,date_ida, date_vuelta,150);
+		Vuelo v8 = new Vuelo("V8","BIL","MAD",7,date_ida, date_vuelta,150, a1);
 		Lista_vuelos.add(v1);
 		Lista_vuelos.add(v2);
 		Lista_vuelos.add(v3);
