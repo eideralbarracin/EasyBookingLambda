@@ -323,23 +323,13 @@ public class Principal extends JFrame {
 		Lista_vuelos=vuelos_filtrados.collect(Collectors.toList());
 				
 		System.out.println(Lista_vuelos.size());
-		//InsertarJPanel(Lista_vuelos);
 		
 		// FILTRO PARA AEROLINEA
 		
-		//List<Vuelo>Lista_vuelos2=Gestor_Vuelos.devolver_Lista();
-		
-		//System.out.println(Lista_vuelos2.size());
 		Stream<Vuelo>vuelos2=Lista_vuelos.stream();
-		
-		
-		//System.out.println(Lista_vuelos2.size());
 		Stream<Vuelo>vuelos_filtrados_aerolinea= vuelos2.filter(v->v.getAerolinea().getNomAerolimea().equals(nomAerolinea));
-		//Lista_vuelos2=vuelos_filtrados_aerolinea.collect(Collectors.toList());
 		Lista_vuelos=vuelos_filtrados_aerolinea.collect(Collectors.toList());
 				
-		//System.out.println(Lista_vuelos2.size());
-//		InsertarJPanel(Lista_vuelos2);
 		InsertarJPanel(Lista_vuelos);
 		
 	}
